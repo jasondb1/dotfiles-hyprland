@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Evil Genius 2
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/700600
+Icon=steam_icon_700600
+Terminal=false
+Type=Application
+Categories=Game;

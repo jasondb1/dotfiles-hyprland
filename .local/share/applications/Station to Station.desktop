@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Station to Station
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2272400
+Icon=steam_icon_2272400
+Terminal=false
+Type=Application
+Categories=Game;

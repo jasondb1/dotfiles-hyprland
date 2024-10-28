@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cura
+Comment=
+Exec=/home/jason/appimage/UltiMaker-Cura-5.6.0-linux-X64.AppImage
+Icon=
+Terminal=false
+Type=Application
+Categories=Gaming;
+Name[en_US]=Cura

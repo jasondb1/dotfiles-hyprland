@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Mad Games Tycoon 2
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1342330
+Icon=steam_icon_1342330
+Terminal=false
+Type=Application
+Categories=Game;

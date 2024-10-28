@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Bopl Battle
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1686940
+Icon=steam_icon_1686940
+Terminal=false
+Type=Application
+Categories=Game;

@@ -1,0 +1,579 @@
+@define-color primary #5657f5;
+@define-color primaryalt rgba(86, 87, 245, 0.7);
+@define-color secondary #918670;
+@define-color highlight #5657f5;
+@define-color hover #918670;
+@define-color background rgba(40, 42, 54, 1);
+@define-color background_transparent rgba(40, 42, 54, 0.6);
+@define-color textcolor1 rgba(217, 216, 216, 0.6);
+@define-color textdark rgba(187, 186, 186, 0.6);
+@define-color bordercolor rgba(217, 216, 216, 0.6);
+@define-color red #D30B0B;
+@define-color redalt rgba(211, 11, 11, 0.7);
+@define-color brown #805E32;
+@define-color green #269C2A;
+@define-color greenalt rgba(38, 156, 42, 0.7);
+@define-color yellow #fdd835;
+@define-color bluetooth rgba(0, 130, 252, 0.8);
+
+* {
+    border:        none;
+    border-radius: 0;
+    font-family: "Inconsolata", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size:     14px;
+    font-weight:     bold;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
+    padding: 0px;
+    margin: 0px;
+}
+
+window {
+    color:      rgba(217, 216, 216, 0.6);
+    background: @background_transparent;
+}
+
+#window {
+    background: @background;
+    padding: 0px 10px 0px 10px;
+    border-radius: 10px;
+    color:@textcolor1;
+    font-size:14px;
+    font-weight: bold;
+    font-style: normal;
+    opacity:0.8;
+}   
+
+window#waybar.empty #window {
+    background-color:transparent;
+}
+
+window#waybar.solo {
+    background: rgba(1, 1, 1, 0.40);
+}
+
+#workspaces {
+	font-size: 20px;
+	margin: 1px 5px 1px 5px;
+	padding: 0px 5px 0px 5px;
+    border-radius: 10px;
+    background: @background;
+    transition: none;
+}
+
+#workspaces button {
+    transition: none;
+    margin: 0px 1px 0px 1px;
+    padding: 0px 4px 0px 4px;
+    background: transparent;
+    color: @greenalt; 
+}
+
+#workspaces button.empty{
+    color: @secondary;
+}
+
+#workspaces button.visible {
+    /*color:      rgba(217, 216, 216, 1);*/
+    color:      @primaryalt;
+}
+
+#workspaces button.focused {
+    /*border-top: 3px solid @primary;*/
+    color: @primaryalt;
+}
+
+#workspaces button.active{
+	border-top: 3px solid @primary;
+    color: @primary;
+}
+
+#workspaces button:hover {
+    border-top: 3px solid @hover;
+    transition: none;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: @hover;
+}
+
+#workspaces button.urgent {
+    color:     @red;
+}
+
+#workspaces button.special {
+    color:     @red;
+}
+
+/*#workspaces button.hosting-monitor {
+    color:     @red;
+}*/
+
+
+/* Sway values
+
+#workspaces button.visible {
+    color:      rgba(217, 216, 216, 1);
+}
+
+#workspaces button.empty {
+    color:      @secondary;
+}
+ 
+#workspaces button.persistent {
+    color:      @secondary;
+}
+*/
+
+/* -----------------------------------------------------
+ * Modules
+ * ----------------------------------------------------- */
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+/* -----------------------------------------------------
+ * Custom Modules
+ * ----------------------------------------------------- */
+
+#custom-appmenu, #custom-appmenuicon {
+    background-color: @background;
+    font-size: 16px;
+    color: @brown;
+    border-radius: 10px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 5px 0px 5px;
+    opacity:0.8;
+   /* border:2px solid @bordercolor;*/
+}
+
+#custom-appmenu:hover, #custom-appmenuicon:hover {
+	opacity:1.0;
+	font-weight:900;
+	color:@hover;
+}
+
+/* -----------------------------------------------------
+ * Custom Exit
+ * ----------------------------------------------------- */
+
+#custom-exit {
+    margin: 0px 8px 0px 0px;
+    padding: 0px 12px 0px 10px;
+    font-size:16px;
+    color: @greenalt;
+    background-color: @background;
+    border-radius: 10px;
+}
+
+#custom-exit:hover {
+	color:@green;
+}
+
+#custom-close {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 12px 0px 10px;
+    font-size:12px;
+    color: @primary;
+    background-color: @background;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+#custom-close:hover {
+	color:@red;
+}
+
+/* -----------------------------------------------------
+ * Tooltips
+ * ----------------------------------------------------- */
+
+tooltip {
+    border-radius: 10px;
+    background-color: @background;
+    opacity:0.95;
+    padding:20px;
+    margin:0px;
+}
+
+tooltip label {
+    color: @textcolor2;
+}
+
+/* -----------------------------------------------------
+ * Groups
+ * ----------------------------------------------------- */
+
+#hardware {
+    border-radius: 10px;
+    background-color: @background;
+    padding:0px;
+    margin: 0px 5px 0px 5px;
+}
+
+#settings {
+    border-radius: 10px;
+    background-color: @background;
+    padding: 0px;
+    margin: 0px 5px 0px 5px;
+}
+
+#info {
+    border-radius: 10px;
+    background-color: @background;
+    padding: 0px;
+    margin: 0px 5px 0px 5px;
+}
+
+#wincontrol {
+    border-radius: 10px;
+    background-color: @background;
+    padding: 0px;
+    margin: 0px 5px 0px 5px;
+}
+
+#other {
+    border-radius: 10px;
+    background-color: @background;
+    padding: 0px;
+    margin: 0px 5px 0px 5px;
+}
+
+/* -----------------------------------------------------
+ * Modules
+ * ----------------------------------------------------- */
+
+#network, #battery, #idle_inhibitor, #network, #bluetooth, #backlight, #pulseaudio, #custom-performance, #power-profiles-daemon, #custom-numlock, #custom-notifications {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+    border-radius: 10px;
+}
+
+#mode, #network, #pulseaudio, #battery, #idle_inhibitor, #bluetooth, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail, #custom-performance, #custom-notifications {
+    border-radius: 10px;
+    margin:     0px 2px 0px 1px;
+}
+
+#mode:hover, #network:hover, #pulseaudio:hover, #battery:hover, #idle_inhibitor:hover, #bluetooth:hover, #backlight:hover, #custom-storage:hover, #custom-spotify:hover, #custom-weather:hover, #custom-mail:hover, #custom-performance:hover, #custom-numlock:hover, #custom-notifications:hover {
+    color: @hover;
+}
+
+#custom-usb-drive, #custom-network-share, #custom-pacman-updates, #custom-trash-indicator, #custom-monitor {
+    border-radius: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-wf-recorder {
+    border-radius: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 8px;
+    padding-right: 10px;
+    transition: none;
+    color: @red;
+    background: @background;
+}	
+
+#custom-usb-drive:hover, #custom-network-share:hover, #custom-pacman-updates:hover, #custom-trash-indicator:hover, #custom-monitor:hover {
+	color: @hover;
+}
+
+#cpu, #memory, #disk, #temperature, #custom-cpu_fan, #custom-gpu_fan {
+    margin:     0px 6px 0px 6px;
+    min-width:  14px;
+}
+
+#cpu, #memory, #temperature, #disk, #custom-cpu_fan, #custom-gpu_fan {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-nvidia_status, #custom-nvidia_mode, #custom-nvidia_gpu {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-nvidia_status:hover, #custom-nvidia_mode:hover, #custom-nvidia_gpu:hover {
+	color: @hover;
+}
+
+#clock {
+    margin-left: 4px;
+    margin-right: 0px;
+    padding-left: 4px;
+    padding-right:0px;
+    border-radius: 10px;
+    transition: none;
+    color: @green;
+    background: @background;
+}
+
+#clock.time {
+    margin-left: 4px;
+    margin-right: 10px;
+    padding-left: 4px;
+    padding-right: 6px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#backlight {
+	padding-left: 8px;
+}
+
+#backlight:hover {
+	color:@hover;
+}
+
+#custom-notif {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-weather {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-system {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-bottom_bar {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-bottom_bar:hover {
+	color:@hover;
+}
+
+#custom-ellipses {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-ellipses:hover {
+    color: @hover;
+}
+
+#tray {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-performance.performance {
+    color: @redalt;
+}
+
+#custom-performance.balanced {
+    color: @primaryalt;
+}
+
+#custom-performance.quiet {
+    color: @greenalt;
+}
+
+#custom-numlock.enabled {
+    color: @primaryalt;
+}
+
+#custom-numlock.disabled {
+    color: @textcolor1;
+}
+
+#custom-network-share.enabled {
+    color: @primaryalt;
+}
+
+#custom-network-share.disabled {
+    color: @textcolor1;
+}
+
+#battery.critical {
+	color: @red;
+}
+
+#battery.low {
+	color: @yellow;
+}
+
+#battery.warning {
+	color: @yellow;
+}
+
+#battery.good, #battery.full {
+	color: @greenalt;
+}
+
+#bluetooth.off {
+	color: @textdark;
+}
+
+#bluetooth.on {
+	color:@bluetooth;
+}
+
+#bluetooth.disabled {
+	color:@textdark;
+}
+
+#bluetooth.disconnected {
+	color:@textdark;
+}
+
+#network.disconnected {
+	color:@textdark;
+}
+
+#network.disconnected {
+	color:@textdark;
+}
+
+#network.disabled {
+	color:@textdark;
+}
+
+#network.wifi {
+	color:@primaryalt;
+}
+
+#network.ethernet {
+	color:@primaryalt;
+}
+
+#network.linked {
+	color:@primaryalt;
+}
+
+#custom-storage.warning {
+    color:      rgba(255, 210, 4, 1);
+}
+
+#custom-storage.critical {
+    color:      rgba(238, 46, 36, 1);
+}
+
+#custom-weather.severe {
+    color: #eb937d;
+}
+
+#custom-weather.sunnyDay {
+    color: #c2ca76;
+}
+
+#custom-weather.clearNight {
+    color: #2b2b2a;
+}
+
+#custom-weather.cloudyFoggyDay, #custom-weather.cloudyFoggyNight {
+    color: #c2ddda;
+}
+
+#custom-weather.rainyDay, #custom-weather.rainyNight {
+    color: #5aaca5;
+}
+
+#custom-weather.showyIcyDay, #custom-weather.snowyIcyNight {
+    color: #d6e7e5;
+}
+
+#custom-weather.default {
+    color: #dbd9d8;
+}
+
+#custom-timer {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 13px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+#custom-timer:hover {
+    color: @hover;
+    background: @background;
+}
+
+#user {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 10px;
+    padding-right: 13px;
+    border-radius: 10px;
+    transition: none;
+    color: @textcolor1;
+    background: @background;
+}
+
+

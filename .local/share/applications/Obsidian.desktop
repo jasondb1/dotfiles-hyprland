@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Obsidian
+Comment=
+Exec=/home/jason/appimage/Obsidian-1.6.7.AppImage --force_low_power_gpu --gpu-active-vendor-id=0x8086 --gpu-active-device-id=0x46a6
+Icon=
+Terminal=false
+Type=Application
+Categories=Productivity;
+Name[en_US]=Obsidian
+

@@ -1,0 +1,36 @@
+{
+	"include": [
+	  "$HOME/.config/waybar/allmodules",
+	  ],
+  
+	// General Settings
+    "layer": "bottom",
+    "position": "right",
+    //"height": 29,
+    "margin-top": 1,
+    "margin-bottom": 1,
+    "margin-left": 0,
+    "margin-right": 0,    
+    "spacing": 4,
+
+    "modules-left": ["custom/todo", "custom/system", "custom/system1"],
+    "modules-center": ["group/hardware"],
+    "modules-right": ["custom/timer", "custom/exit"],
+
+	"custom/todo": {
+        "format": "TODO 1{}",
+        "interval": 10,
+        "return-type": "json",
+        //"exec": "~/.config/waybar/custom/kvm-monitor.sh",
+        //"on-click": "~/.config/waybar/custom/kvm.sh"
+    },
+    "custom/system": {
+        "format": "A\nB\nC",
+        "tooltip": false
+    },
+    "custom/system1": {
+        "format": "System1",
+        "tooltip": false
+    },
+
+}

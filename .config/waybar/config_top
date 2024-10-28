@@ -1,0 +1,21 @@
+
+{
+	"include": [
+	  "$HOME/.config/waybar/allmodules",
+	  ],
+  
+	// General Settings
+    "layer": "bottom",
+    "position": "top",
+    "margin-top": 1,
+    "margin-bottom": 1,
+    "margin-left": 0,
+    "margin-right": 0,    
+    "spacing": 0,
+
+    "modules-left": ["custom/bottom_bar", "custom/appmenuicon", "hyprland/workspaces", "hyprland/submap", "group/wincontrol", "custom/wf-recorder"],
+    "modules-center": [],
+    "modules-right": ["group/other", "group/settings", "group/info", "custom/timer", "tray", "custom/exit"],
+
+
+}

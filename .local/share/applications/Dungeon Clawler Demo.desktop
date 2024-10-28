@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dungeon Clawler Demo
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2878040
+Icon=steam_icon_2878040
+Terminal=false
+Type=Application
+Categories=Game;
