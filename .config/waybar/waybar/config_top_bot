@@ -1,0 +1,81 @@
+[
+{
+	"include": [
+	  "$HOME/.config/waybar/config_top",
+	  ],
+
+},
+
+{
+	"include": [
+	  "$HOME/.config/waybar/allmodules",
+	  ],
+  
+	// General Settings
+    "layer": "bottom",
+    "position": "bottom",
+    "margin-top": 1,
+    "margin-bottom": 1,
+    "margin-left": 0,
+    "margin-right": 0,    
+    "spacing": 2,
+    "modules-left": ["privacy"],
+    "modules-center": ["group/performance", "network#speed", "power-profiles-daemon"],
+    "modules-right": ["user"],
+    
+    "group/performance": {
+        "orientation": "inherit",        
+        "modules": [
+            "disk",
+            "disk#home",
+            "cpu",
+            "memory",
+            "temperature",
+            "custom/cpu_fan",
+            "custom/gpu_fan",
+            "custom/nvidia_gpu",
+            "custom/nvidia_status",
+        ]
+    },
+    
+    "user": {
+        "format": "{user} (up {work_d} days ↑)",
+        "interval": 60,
+        "height": 30,
+        "width": 30,
+        "icon": true,
+	}, 
+	
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 18,
+		"transition-duration": 250,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-out",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		]
+	},
+	"custom/test": {
+        "format": "{}",
+        "exec": "hyprctl",
+        "param": "blah",
+        "interval": 5
+    },
+
+
+},
+
+]
