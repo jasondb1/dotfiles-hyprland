@@ -16,9 +16,10 @@ cp -r $HOME/.icons 	./.icons
 cp -r $HOME/.themes ./.themes
 cp -r $HOME/.fonts 	./.fonts
 
-
-
 #other
 cp -r $HOME/.vimrc 	./
-cp -r $HOME/.bashrc 	./
+cp -r $HOME/.bashrc ./
 cp -r $HOME/.vimrc 	./
+
+#etc
+sudo cp -r /etc/greetd ./etc/greetd

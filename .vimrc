@@ -92,9 +92,9 @@ set backupdir=$HOME/.vim/backup//
 set directory=$HOME/.vim/swap//
 set viewdir=$HOME/.vim/views//
 "" Create directories if they don't exist
-"silent execute '!mkdir -p $HOME/.vim/backup'
-"silent execute '!mkdir -p $HOME/.vim/swap'
-"silent execute '!mkdir -p $HOME/.vim/views'
+silent execute '!mkdir -p $HOME/.vim/backup'
+silent execute '!mkdir -p $HOME/.vim/swap'
+silent execute '!mkdir -p $HOME/.vim/views'
 
 
 " PLUGINS ---------------------------------------------------------------- {{{

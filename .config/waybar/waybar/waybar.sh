@@ -17,12 +17,12 @@ case "$1" in
     --top)
 		terminate
 		echo 0 > ~/.config/waybar/state
-        waybar -c config &
+        waybar -c ~/.config/waybar/config &
         ;;
      --top_bottom)
 		terminate
 		echo 1 > ~/.config/waybar/state
-        waybar -c config_top_bot &
+        waybar -c ~/.config/waybar/config_top_bot &
         ;;
       --toggle)
 		terminate
@@ -30,10 +30,10 @@ case "$1" in
 		if [ $state -eq 1 ]
 		then
 			echo 0 > ~/.config/waybar/state
-			waybar -c config_top &
+			waybar -c ~/.config/waybar/config_top &
 		else
 			echo 1 > ~/.config/waybar/state
-			waybar -c config_top_bot &
+			waybar -c ~/.config/waybar/config_top_bot &
 		fi
         ;;
       --help)
@@ -43,6 +43,6 @@ case "$1" in
 	   *)
 			terminate
 			echo 0 > ~/.config/waybar/state
-			waybar -c config &
+			waybar -c ~/.config/waybar/config &
         ;;
 esac

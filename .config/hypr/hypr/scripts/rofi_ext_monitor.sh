@@ -9,12 +9,13 @@ rofi_command="rofi -theme $dir/nord.rasi"
 # 󰍺 󰍹 󰶐
 
 # Options
-connect="󰍺 Extend Desktop"
+connect="󰍺 Connect/Reset External Desktop"
 disconnect="󰶐 Disconnect Extended Desktop"
 mainoff="󰶐 Main Display Off"
 mainon="󰍹 Main Display On"
 mirror="󰍺 Mirror Monitors"
 stopmirror="󰶐 Stop Mirroring"
+reset="󰍺 Reset External"
 
 # Confirmation
 confirm_exit() {
@@ -37,6 +38,7 @@ chosen="$(echo -e "$options" | $rofi_command -p "$title" -dmenu -selected-row 0)
 case $chosen in
     $connect)
 		#Connect Monitor
+	hyprctl keyword monitor HDMI-A-1, disable
 	hyprctl keyword monitor HDMI-A-1, 1920x1080@60, 0x-1080, 1
         ;;
     $disconnect)

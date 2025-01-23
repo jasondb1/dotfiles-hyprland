@@ -14,6 +14,7 @@ case $1 in
 			echo "READY" > /tmp/waybar_timer
 			echo  '{"text":"􀐯", "alt":"􀐯"}'
 			notify-send -u low "Time's Up!"
+			#~/.config/waybar/modules/wfrecord-stop.sh
 			#echo " "
 			#echo "Finished"
 		elif [[ $STATUS > $CUR_TIME ]]; then

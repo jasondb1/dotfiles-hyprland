@@ -1,0 +1,9 @@
+#!/bin/sh 
+tmux new-session -d
+tmux split-window -h -p 70
+tmux select-pane -t0
+#tmux split-window -v
+#tmux select-pane -t1
+#tmux send-keys 'tail -f /var/log/monitor.log' C-m \; \
+#tmux send-keys 'vim' C-m \; \
+tmux -2 attach-session -d

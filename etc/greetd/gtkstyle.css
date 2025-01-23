@@ -1,0 +1,42 @@
+window {
+        background-image: url("file:///etc/greetd/Background.jpg");
+        background-size: cover;
+	background-position: center;
+	border-image-width: 0;
+	border-width: 0;
+	border: none;
+}
+
+box#window {
+        background-color: rgba(36, 29, 12, 0.5);
+        border-radius: 10px;
+        padding: 50px;
+}
+
+label {
+	color: rgba(250, 250, 250,  0.92);
+	font-weight: 600;
+}
+
+button label{
+	color: rgba(36, 29, 12, 0.8)
+}
+
+label#clock {
+	color: rgba(36, 29, 12, 0.8);
+	font-weight: 600;
+}
+
+button {
+	background-color: rgba (182, 148, 62, 0.95);
+	background-image: none;
+	color: rgba(36, 29, 12, 0.8);
+}
+
+entry {
+	background-image: none;
+	background-color: rgba(36, 29, 12, 1.0);
+	color: rgba(250, 250, 250, 0.98 );
+}
+
+

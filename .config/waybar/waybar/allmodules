@@ -2,6 +2,83 @@
 //􀍡􀎁􀎂􀎃􀎄􀎅􀎆􀎇􀎈􀎉􀎊􀋙􀋚􀊠􀊢􀊤􀊦􀊨􀑛􀛩􀛨􀛪􀜧􀢋􀣿􀤜􀺸􀺶􀙁􀾫􀍠􀯹􀰪􀨨􀨩􀨱􀄨􀄩 
 //􀊲􀊰􀋝􀎦􀎨􀑓􀟹􀥲􀥎􀽋   
 
+/////////////////////// Group Settings
+    "group/settings": {
+        "orientation": "inherit",        
+        "modules": [
+			"network",
+			"bluetooth",
+			"custom/usb-drive",   
+			"custom/network-share",
+            "pulseaudio",
+            //"backlight",
+            "battery",
+            "custom/numlock",
+            "custom/performance",
+        ]
+    },
+// Group Other
+    "group/other": {
+        "orientation": "inherit",  
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-custom-system",
+            "transition-left-to-right": false,
+            "click-to-reveal": true,
+        },           
+        "modules": [
+			"custom/ellipses",
+			"custom/monitor",
+			"idle_inhibitor",
+			"custom/notifications",
+			"backlight",        
+			"custom/pacman-updates",
+			"custom/trash-indicator",
+			"custom/timeshift",
+        ]
+    },
+// Group Hardware
+    "group/hardware": {
+        "orientation": "inherit", 
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-custom-system",
+            "transition-left-to-right": false,
+            "click-to-reveal": true,
+        },        
+        "modules": [
+			"custom/system",
+            "disk",
+            "disk#home",
+            "cpu",
+            "memory",
+            "temperature",
+            "custom/cpu_fan",
+            "custom/gpu_fan",
+            "custom/nvidia_gpu",
+            "custom/nvidia_status",
+        ]
+    },
+// Group info
+    "group/info": {
+        "orientation": "inherit",        
+        "modules": [
+			"custom/weather",
+			"clock",
+			"clock#time",
+        ]
+    },
+// Group Window Control
+    "group/wincontrol": {
+        "orientation": "inherit",        
+        "modules": [
+			"hyprland/window",
+			"custom/close",
+        ]
+    },
+    
+//////////////////////////////////
+
     "hyprland/workspaces": {
         "format": "{icon}",
         "active-only": false,
@@ -83,81 +160,6 @@
     "max-length": 8,
     "tooltip": false
 	},
-// Group Settings
-    "group/settings": {
-        "orientation": "inherit",        
-        "modules": [
-			"network",
-			"bluetooth",
-			"custom/usb-drive",   
-			"custom/network-share",
-            "pulseaudio",
-            //"backlight",
-            "battery",
-            "custom/numlock",
-            "custom/performance",
-        ]
-    },
-// Group Other
-    "group/other": {
-        "orientation": "inherit",  
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-custom-system",
-            "transition-left-to-right": false,
-            "click-to-reveal": true,
-        },           
-        "modules": [
-			"custom/ellipses",
-			"custom/nvidia_mode",
-			"custom/monitor",
-			"idle_inhibitor",
-			"custom/notifications",
-			"backlight",        
-			"custom/pacman-updates",
-			"custom/trash-indicator",
-			"custom/timeshift",
-        ]
-    },
-// Group Hardware
-    "group/hardware": {
-        "orientation": "inherit", 
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-custom-system",
-            "transition-left-to-right": false,
-            "click-to-reveal": true,
-        },        
-        "modules": [
-			"custom/system",
-            "disk",
-            "disk#home",
-            "cpu",
-            "memory",
-            "temperature",
-            "custom/cpu_fan",
-            "custom/gpu_fan",
-            "custom/nvidia_gpu",
-            "custom/nvidia_status",
-        ]
-    },
-// Group info
-    "group/info": {
-        "orientation": "inherit",        
-        "modules": [
-			"custom/weather",
-			"clock",
-			"clock#time",
-        ]
-    },
-// Group Window Control
-    "group/wincontrol": {
-        "orientation": "inherit",        
-        "modules": [
-			"hyprland/window",
-			"custom/close",
-        ]
-    },
     
     
 /////////////////Modules
@@ -184,7 +186,7 @@
 		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "clock": {
-		"timezone": "America/Edmonton",
+		//"timezone": "America/Edmonton",
         "format": "{:%b %d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         //"format-alt": "{:%Y-%m-%d %H:%M}",
@@ -330,11 +332,16 @@
 	},
     "battery": {
 		"bat": "BAT1",
-        "format": "{capacity}% {icon}",
+        "format": "{icon}",
+        "format-alt": "{capacity}% {icon}",
         //"format-charging": "{capacity}% 􀬘",
         "format-charging": "􀢋",
+        "format-alt-charging": "{capacity}% 􀢋",
+        "format-alt-plugged": "{capacity}% 􀬘",
         "format-plugged": "􀬘",
-        "format-alt": "{time} {icon}",
+        "tooltip": "{time} {icon} - {capacity}",
+        "full-at": 65,
+        "format-alt-click": "click-right",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["􀛪", "􀛩", "􀺶", "􀺸", "􀛨"],
@@ -347,9 +354,9 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         //"format-wifi": "{essid} ({signalStrength}%) 􀙇",
         "format-wifi": "􀙇",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "",
         "tooltip-format": "{ifname}: {ipaddr}: ({signalStrength}%)",
-        "format-linked": "{ifname} (No IP) ",
+        "format-linked": "",
         "format-disconnected": "􀙈",
         "format-alt": "{ifname}: {ipaddr}􀙇",
         "on-click": "kitty nmtui",
@@ -547,8 +554,8 @@
 		"interval": 21600,
 		"return-type": "json",
 		"exec": "$HOME/.config/waybar/modules/timeshift.sh --status_json",
-		"format": "Last Snapshot:{}",
-		"format-alt": "Last Snapshot:{}",
+		"format": "Last Snap:{}",
+		"format-alt": "Last Snap:{}",
 	},  
     
     

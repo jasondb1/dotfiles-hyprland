@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+function find_largest_files() {
+    du -h -x -s -- * | sort -r -h | head -20;
+}
+
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -23,17 +28,24 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+
+# Ignore case on auto-completion
+# Note: bind used instead of sticking these in .inputrc
+if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
+
+# Show auto-completion list automatically, without double tab
+if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
+
+
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -45,23 +57,25 @@ esac
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+#if [ -n "$force_color_prompt" ]; then
+#    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then#
+#	# We have color support; assume it's compliant with Ecma-48#
+#	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+#	# a case would tend to support setf rather than setaf.)
+#	color_prompt=yes
+#    else
+#	color_prompt=
+#    fi
+#fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+# Color for manpages in less makes manpages a little easier to read
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -76,6 +90,9 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
+    alias lk='ls -lSrh' # sort by size
+    alias lf="ls -l | egrep -v '^d'" # files only
+    alias ldir="ls -l | egrep '^d'" # directories only
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -91,6 +108,50 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+#running processes
+alias p="ps aux | grep "
+alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
+
+# Alias's to show disk space and space used in a folder
+alias diskspace="du -S | sort -n -r |more"
+alias folders='du -h --max-depth=1'
+alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
+alias tree='tree -CAhF --dirsfirst'
+alias treed='tree -CAFd'
+alias mountedinfo='df -hT'
+
+# Alias's for archives
+alias mktar='tar -cvf'
+alias mkbz2='tar -cvjf'
+alias mkgz='tar -cvzf'
+alias untar='tar -xvf'
+alias unbz2='tar -xvjf'
+alias ungz='tar -xvzf'
+
+# Show help for this .bashrc file
+alias hlp='less ~/.bashrc_help'
+
+# alias to show the date
+alias da='date "+%Y-%m-%d %A %T %Z"'
+
+# Alias's to modified commands
+alias cp='cp -i'
+alias mv='mv -i'
+#alias rm='trash -v'
+alias mkdir='mkdir -p'
+alias ps='ps auxf'
+alias ping='ping -c 10'
+alias less='less -R'
+alias cls='clear'
+
+# alias chmod commands
+alias mx='chmod a+x'
+alias 000='chmod -R 000'
+alias 644='chmod -R 644'
+alias 666='chmod -R 666'
+alias 755='chmod -R 755'
+alias 777='chmod -R 777'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -115,5 +176,37 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH="/home/jason/bin:$PATH"
+
+
+#######################################################
+# SPECIAL FUNCTIONS
+#######################################################
+# Extracts any archive(s) (if unp isn't installed)
+extract() {
+	for archive in "$@"; do
+		if [ -f "$archive" ]; then
+			case $archive in
+			*.tar.bz2) tar xvjf $archive ;;
+			*.tar.gz) tar xvzf $archive ;;
+			*.bz2) bunzip2 $archive ;;
+			*.rar) rar x $archive ;;
+			*.gz) gunzip $archive ;;
+			*.tar) tar xvf $archive ;;
+			*.tbz2) tar xvjf $archive ;;
+			*.tgz) tar xvzf $archive ;;
+			*.zip) unzip $archive ;;
+			*.Z) uncompress $archive ;;
+			*.7z) 7z x $archive ;;
+			*) echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
+
+# 1. Nice username colors
+export PS1='[\[\e[0;36m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[0m\]]\$ '
+
+export PATH="$HOME/bin:$PATH"
 . "$HOME/.cargo/env"
