@@ -33,8 +33,9 @@
             "temperature",
             "custom/cpu_fan",
             "custom/gpu_fan",
+            //"custom/nvidia_status",
             "custom/nvidia_gpu",
-            "custom/nvidia_status",
+
         ]
     },
     

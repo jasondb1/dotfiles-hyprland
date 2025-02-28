@@ -7,13 +7,14 @@ case $1 in
 		CUR_TIME=$(date +%s)
 		STATUS=$(cat /tmp/waybar_timer)
 
-		if [ $STATUS == "READY" ]; then
+		if [[ $STATUS == "READY" ]]; then
 			echo  '{"text":"􀐯", "alt":"􀐯"}'
-		elif [ $STATUS == "FINISHED" ]; then
+		elif [[ $STATUS == "FINISHED" ]]; then
 			mpv --no-config --no-terminal $HOME/.config/waybar/modules/timer.wav &
 			echo "READY" > /tmp/waybar_timer
 			echo  '{"text":"􀐯", "alt":"􀐯"}'
 			notify-send -u low "Time's Up!"
+			#~/.config/waybar/modules/wfrecord-stop.sh
 			#echo " "
 			#echo "Finished"
 		elif [[ $STATUS > $CUR_TIME ]]; then

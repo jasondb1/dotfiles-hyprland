@@ -63,7 +63,7 @@ element-icon {
 #entry {
    background-color: @background;
    text-color: @foreground;
-   placeholder: "Search";
+   placeholder: "...";
    placeholder-color: @grey;
    font: "Sora Regular 20";
 }

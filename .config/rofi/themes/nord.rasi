@@ -125,3 +125,8 @@ button selected normal {
     border: 2px 0px 2px 2px;
     border-color: @foreground;
 }
+
+entry {
+	placeholder: "...";
+	blink: "true";
+}

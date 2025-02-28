@@ -1,6 +1,87 @@
 {    
 //􀍡􀎁􀎂􀎃􀎄􀎅􀎆􀎇􀎈􀎉􀎊􀋙􀋚􀊠􀊢􀊤􀊦􀊨􀑛􀛩􀛨􀛪􀜧􀢋􀣿􀤜􀺸􀺶􀙁􀾫􀍠􀯹􀰪􀨨􀨩􀨱􀄨􀄩 
-//􀊲􀊰􀋝􀎦􀎨􀑓􀟹􀥲􀥎􀽋   
+//􀊲􀊰􀋝􀎦􀎨􀑓􀟹􀥲􀥎􀽋   􀑧􀥠
+
+/////////////////////// Group Settings
+    "group/settings": {
+        "orientation": "inherit",        
+        "modules": [
+			"network",
+			"bluetooth",
+			"custom/usb-drive",   
+			"custom/network-share",
+            "pulseaudio",
+            "pulseaudio#mic",
+            //"backlight",
+            "battery",
+            "custom/numlock",
+            "custom/wf-recorder",
+            "custom/performance",
+        ]
+    },
+// Group Other
+    "group/other": {
+        "orientation": "inherit",  
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-custom-system",
+            "transition-left-to-right": false,
+            "click-to-reveal": true,
+        },           
+        "modules": [
+			"custom/ellipses",
+			"custom/monitor",
+			"idle_inhibitor",
+			"custom/notifications",
+			"backlight", 
+			//"custom/timeshift",       
+			"custom/pacman-updates",
+			"custom/trash-indicator",
+			"custom/bottom_bar", 
+			"custom/common_apps",
+        ]
+    },
+// Group Hardware
+    "group/hardware": {
+        "orientation": "inherit", 
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-custom-system",
+            "transition-left-to-right": false,
+            "click-to-reveal": true,
+        },        
+        "modules": [
+			"custom/system",
+            "disk",
+            "disk#home",
+            "cpu",
+            "memory",
+            "temperature",
+            "custom/cpu_fan",
+            "custom/gpu_fan",
+            "custom/nvidia_gpu",
+            "custom/nvidia_status",
+        ]
+    },
+// Group info
+    "group/info": {
+        "orientation": "inherit",        
+        "modules": [
+			"custom/weather",
+			"clock",
+			"clock#time",
+        ]
+    },
+// Group Window Control
+    "group/wincontrol": {
+        "orientation": "inherit",        
+        "modules": [
+			"hyprland/window",
+			"custom/close",
+        ]
+    },
+    
+//////////////////////////////////
 
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -22,7 +103,6 @@
              "7": "􀨬",
              "8": "􀈟",
              "9": "􀙗",
-             //"10": "􀙗",
          },
 		"persistent-workspaces": {
 			"1": [],
@@ -76,87 +156,14 @@
     },
     "hyprland/window": {
         "max-length": 80,
-        "tooltip": false
+        "tooltip": false,
+				"separate-outputs": true
     },
     "hyprland/submap": {
     "format": " {}",
     "max-length": 8,
     "tooltip": false
 	},
-// Group Settings
-    "group/settings": {
-        "orientation": "inherit",        
-        "modules": [
-			"network",
-			"bluetooth",
-			"custom/usb-drive",   
-			"custom/network-share",
-            "pulseaudio",
-            //"backlight",
-            "battery",
-            "custom/numlock",
-            "custom/performance",
-        ]
-    },
-// Group Other
-    "group/other": {
-        "orientation": "inherit",  
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-custom-system",
-            "transition-left-to-right": false,
-            "click-to-reveal": true,
-        },           
-        "modules": [
-			"custom/ellipses",
-			"custom/nvidia_mode",
-			"custom/monitor",
-			"idle_inhibitor",
-			"custom/notifications",
-			"backlight",        
-			"custom/pacman-updates",
-			"custom/trash-indicator",
-        ]
-    },
-// Group Hardware
-    "group/hardware": {
-        "orientation": "inherit", 
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-custom-system",
-            "transition-left-to-right": false,
-            "click-to-reveal": true,
-        },        
-        "modules": [
-			"custom/system",
-            "disk",
-            "disk#home",
-            "cpu",
-            "memory",
-            "temperature",
-            "custom/cpu_fan",
-            "custom/gpu_fan",
-            "custom/nvidia_gpu",
-            "custom/nvidia_status",
-        ]
-    },
-// Group info
-    "group/info": {
-        "orientation": "inherit",        
-        "modules": [
-			"custom/weather",
-			"clock",
-			"clock#time",
-        ]
-    },
-// Group Window Control
-    "group/wincontrol": {
-        "orientation": "inherit",        
-        "modules": [
-			"hyprland/window",
-			"custom/close",
-        ]
-    },
     
     
 /////////////////Modules
@@ -183,7 +190,7 @@
 		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
     "clock": {
-		"timezone": "America/Edmonton",
+		//"timezone": "America/Edmonton",
         "format": "{:%b %d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         //"format-alt": "{:%Y-%m-%d %H:%M}",
@@ -215,12 +222,14 @@
   "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         //"format": "{volume}% {icon}  {format_source}",
-        "format": "{icon}  {format_source}",
-        "format-alt": "{volume}% {icon}  {format_source}",
+        //"format": "{icon}  {format_source}",
+        "format": "{icon}",
+        "format-alt": "{volume}% {icon}",
         "format-alt-click": "click-right",
-        "format-bluetooth": "{icon}   {format_source}",
-        "format-bluetooth-muted": "􀊢 {icon}   {format_source}",
-        "format-muted": "􀊢 {format_source}",
+        "format-bluetooth": "{icon} ",
+        "format-bluetooth-muted": "􀊢 {icon} ",
+        //"format-muted": "􀊢 {format_source}",
+        "format-muted": "􀊢",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -235,6 +244,30 @@
         "on-click": "pavucontrol",
         "tooltip-format": "{volume}% {icon}  {format_source}",
         "states": {"low": 30, "medium": 60, "high": 100, "over": 150 },
+    },  
+      "pulseaudio#mic": {
+        // "scroll-step": 1, // %, can be a float
+        //"format": "{volume}% {icon}  {format_source}",
+        "format": "{format_source}",
+        "format-alt": "{format_source}",
+        "format-alt-click": "click-right",
+        "format-bluetooth": "",
+        "format-bluetooth-muted": "",
+        "format-muted": "",
+        "format-source": "",
+        "format-source-alt": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["􀊠", "􀊤", "􀊦", "􀊨"]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "{format_source}",
     },
     "custom/notif": {
         "interval": 1,
@@ -270,6 +303,7 @@
     "custom/close": {
         "format": "􀺾",
         "on-click": "hyprctl dispatch killactive",
+        "tooltip": "Close Window"
     },
     "tray": {
         "icon-size": 16
@@ -277,15 +311,6 @@
     
     
 ////Hardware
-	"keyboard-state": {
-		"numlock": true,
-		//"capslock": true,
-		"format": "{name} {icon}",
-		"format-icons": {
-			"locked": "",
-			"unlocked": ""
-		}
-	},
 	"custom/numlock": {
 		"interval": 5,
 		"return-type": "json",
@@ -294,10 +319,12 @@
 	},
      "cpu": {
         "format": "􀫥 {usage}%",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "kitty bashtop",
     },
     "memory": {
-        "format": "􀫦 {}% "
+        "format": "􀫦 {}% ",
+        "on-click": "kitty bashtop",
     },
     "disk": {
 		"interval": 120,
@@ -315,7 +342,8 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "on-click": "kitty bashtop",
     },
     "custom/cpu_fan": {
 		"interval": 1,
@@ -329,11 +357,17 @@
 	},
     "battery": {
 		"bat": "BAT1",
-        "format": "{capacity}% {icon}",
+        "format": "{icon}",
+        "format-alt": "{capacity}% {icon}",
         //"format-charging": "{capacity}% 􀬘",
         "format-charging": "􀢋",
+        "format-alt-charging": "{capacity}% 􀢋",
+        "format-alt-charging": "{capacity}% 􀢋",
+        "format-alt-plugged": "{capacity}% 􀬘",
         "format-plugged": "􀬘",
-        "format-alt": "{time} {icon}",
+        "tooltip": "{time} {icon} - {capacity}",
+        //"full-at": 65,
+        "format-alt-click": "click-right",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["􀛪", "􀛩", "􀺶", "􀺸", "􀛨"],
@@ -346,11 +380,11 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         //"format-wifi": "{essid} ({signalStrength}%) 􀙇",
         "format-wifi": "􀙇",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "󰌘",
         "tooltip-format": "{ifname}: {ipaddr}: ({signalStrength}%)",
-        "format-linked": "{ifname} (No IP) ",
+        "format-linked": "󰌘",
         "format-disconnected": "􀙈",
-        "format-alt": "{ifname}: {ipaddr}􀙇",
+        "format-alt": "{ifname}: {ipaddr}",
         "on-click": "kitty nmtui",
         "format-alt-click": "click-right",
     },
@@ -379,7 +413,7 @@
 // System
     "custom/ellipses": {
         "format": "􀍠",
-        "tooltip": false
+        "tooltip": false,
     }, 
  // Rofi Application Launcher
     "custom/appmenuicon": {
@@ -388,6 +422,11 @@
         "on-click": "rofi -show drun -replace",
         "on-click-right": "~/.config/hypr/scripts/showbindings.sh",
         "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
+    },
+        "custom/common_apps": {
+        "format": "􀥠",
+        "on-click": "~/.config/waybar/modules/startup_programs.sh",
+        "tooltip-format": "Start Common Programs"
     },
 // System
     "custom/bottom_bar": {
@@ -405,7 +444,8 @@
     "custom/monitor": {
         "format": "􀨧",
         "on-click": "~/.config/hypr/scripts/rofi_ext_monitor.sh &",
-        "tooltip-format": "Monitor Menu"
+        "on-click-right": "~/.config/waybar/modules/reset_monitor.sh",
+        "tooltip-format": "Left Click - Monitor Menu\nRight Click - Reset Monitors"
     },
     "custom/notifications": {
 		"format": "{} {icon}",
@@ -482,10 +522,10 @@
 	},
 	"custom/trash-indicator": {
 		"interval": 300,
-		"exec": "$HOME/.config/waybar/modules/info-trash.sh",
+		"./info": "$HOME/.config/waybar/modules/info-trash.sh",
 		"format": "􀈑 {}",
 		"on-click-right": "$HOME/.config/waybar/modules/info-trash.sh --clean &",
-		"on-click": "caja ~/.local/share/Trash --clean &",
+		"on-click": "caja ~/.local/share/Trash &",
 	},	
 	"custom/network-share": {
 		"interval": 60,
@@ -542,5 +582,13 @@
 		"exec": "supergfxctl -S",
 		"format": "{}",
 	},  
+	"custom/timeshift": {
+		"interval": 21600,
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/modules/timeshift.sh --status_json",
+		"format": "Last Snap:{}",
+		"format-alt": "Last Snap:{}",
+	},  
+    
     
 }

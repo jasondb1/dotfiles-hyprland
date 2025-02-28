@@ -1,17 +1,22 @@
-/** Basic config file **/
+/** Basic config file 󰳶 **/
 
 configuration {
   show-icons: true;
   icon-theme: "Papirus";
-  display-drun: "󰦴";
-  display-window: "󰦴 ";
-  display-combi: "󰦴  ";
+  display-drun: "󰳶 ";
+  display-window: "󰳶 ";
+  display-combi: "󰳶 ";
 }
-@theme "themes/center-nord.rasi"
 
-/* @import "/home/jason/.config/awesome/theme/nord.rasi" */
+@theme "themes/nord-alt.rasi"
+/** @theme "$HOME/.config/rofi/themes/center-nord.rasi" **/
 
 element selected {
     background-color: #5657f5;
     text-color: @foreground;
+}
+
+entry {
+	placeholder: "...";
+	blink: "true";
 }

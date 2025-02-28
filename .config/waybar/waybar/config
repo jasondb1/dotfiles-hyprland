@@ -1,6 +1,0 @@
-{
-	"include": [
-	  "$HOME/.config/waybar/config_top",
-	  ],
-
-}

@@ -32,7 +32,7 @@
     backlight:   #ccffeedd;
     background-color:  transparent;
 
-    /*highlight:     underline bold #eceff4;*/
+    highlight:     #ccffeedd;
 
     transparent: rgba(46,52,64,0);
 }
@@ -131,4 +131,9 @@ button {
 button selected normal {
     border: 2px 0px 2px 2px;
     border-color: @foreground;
+}
+
+entry {
+	placeholder: "...";
+	blink: "true";
 }

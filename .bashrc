@@ -114,8 +114,9 @@ alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
 # Alias's to show disk space and space used in a folder
-alias diskspace="du -S | sort -n -r |more"
-alias folders='du -h --max-depth=1'
+alias diskspace="du -Sh | sort -h -r | less"
+alias top10="du -Sh | sort -h -r | head"
+alias folders='du -h --max-depth=1 | sort -h -r'
 alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
@@ -156,6 +157,9 @@ alias 777='chmod -R 777'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+ 
+alias print='lpr -P CanonMF264 -o sides=twosided-long-edge collate=true'
+alias mupdf='mupdf -r92 -CEEEAE0'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -210,3 +214,7 @@ export PS1='[\[\e[0;36m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[
 
 export PATH="$HOME/bin:$PATH"
 . "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export OLLAMA_MODELS="$HOME/ollama_llm_models"
+export PATH="$PATH:/home/jason/.lmstudio/bin"
